@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +64,39 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Order.cs">
+      <DependentUpon>YunusovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderProduct.cs">
+      <DependentUpon>YunusovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PickupPoint.cs">
+      <DependentUpon>YunusovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>YunusovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>YunusovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>YunusovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YunusovModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>YunusovModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YunusovModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>YunusovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YunusovModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>YunusovModel.edmx</DependentUpon>
+    </Compile>
     <Page Include="AddEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -101,19 +143,52 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="YunusovModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>YunusovModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="YunusovModel.edmx.diagram">
+      <DependentUpon>YunusovModel.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="YunusovModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>YunusovModel.Context.cs</LastGenOutput>
+      <DependentUpon>YunusovModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="YunusovModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>YunusovModel.edmx</DependentUpon>
+      <LastGenOutput>YunusovModel.cs</LastGenOutput>
+    </Content>
+    <Resource Include="Товар_import\B320R5.jpg" />
+    <Resource Include="Товар_import\D329H3.jpg" />
+    <Resource Include="Товар_import\D572U8.jpg" />
+    <Resource Include="Товар_import\F572H7.jpg" />
+    <Resource Include="Товар_import\F635R4.jpg" />
+    <Resource Include="Товар_import\G432E4.jpg" />
+    <Resource Include="Товар_import\G783F5.jpg" />
+    <Resource Include="Товар_import\H782T5.jpg" />
+    <Resource Include="Товар_import\J384T6.jpg" />
+    <Resource Include="Товар_import\А112Т4.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="rec\icon.ico" />
     <Resource Include="rec\logo.png" />
     <Resource Include="rec\picture.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

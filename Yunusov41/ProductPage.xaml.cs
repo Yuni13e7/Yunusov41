@@ -23,6 +23,8 @@ namespace Yunusov41
         public ProductPage()
         {
             InitializeComponent();
+            var currentProduct = Yunusov41Entities.GetContext().Product.ToList();
+            ProductListView.ItemsSource = currentProduct;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

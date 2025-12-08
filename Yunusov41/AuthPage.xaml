@@ -1,0 +1,49 @@
+﻿<Page x:Class="Yunusov41.AuthPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Yunusov41"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AuthPage" FontFamily="Comic Sans MS">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="440"></ColumnDefinition>
+            <ColumnDefinition Width="460"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="180"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="220"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Логин" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="20" Margin="0, 0, 0, 0"></TextBlock>
+            <TextBlock Grid.Row="1" Text="Пароль" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="20" Margin="0,0, 0, 30"></TextBlock>
+            <Button Grid.Row="2" Content="Войти как гость" Name="BtnLogInAsAGuest" HorizontalAlignment="Right" Margin="0, 0, 40, 20" Click="BtnLogInAsAGuest_Click" ></Button>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="180"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="220"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" Name="TBoxLogin" TextChanged="TBoxLogin_TextChanged" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="20" Width="250" Margin="120, 0, 0, 0"></TextBox>
+            <TextBox Grid.Row="1" Name="TBoxPassword" TextChanged="TBoxPassword_TextChanged"  VerticalAlignment="Center" HorizontalAlignment="left" FontSize="20" Margin="120,0, 0, 30" Width="250"></TextBox>
+            <Button Grid.Row="2" Content="Войти" Name="BtnLogIn" HorizontalAlignment="Left" Margin="160, 0, 0, 20" Click="BtnLogIn_Click" ></Button>
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" Name="CaptchaPanel" Visibility="Collapsed" Margin="0, 0, 30, 0">
+                <TextBlock Name="captchaOneWord" FontSize="22" Margin="30,0,0,0"></TextBlock>
+                <TextBlock Name="captchaTwoWord" FontSize="22" TextDecorations="Strikethrough" Margin="0,5,0,0"></TextBlock>
+                <TextBlock Name="captchaThreeWord" FontSize="22" TextDecorations="Strikethrough"></TextBlock>
+                <TextBlock Name="captchaFourWord" FontSize="22" TextDecorations="Strikethrough" Margin="0,10,0,0"></TextBlock>
+            </StackPanel>
+
+            <TextBox Name="TBoxCaptcha" Grid.Row="3" Grid.Column="1" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Left" Width="120" FontSize="20" Margin="0,0,30,60"
+         TextChanged="TBoxCaptcha_TextChanged">
+          </TextBox>
+        </Grid>
+        
+       
+    </Grid>
+</Page>

@@ -11,7 +11,8 @@ namespace Yunusov41
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -29,6 +30,37 @@ namespace Yunusov41
         public string ProductSupplier { get; set; }
         public string ProductCategory { get; set; }
         public byte ProductDiscountAmount { get; set; }
+        
+            public decimal DiscountedPrice
+            {
+                get
+                {
+                    try
+                    {
+                        decimal cost = Convert.ToDecimal(ProductCost);
+                        decimal discount = 0;
+
+                        if (ProductDiscountAmount != null)
+                        {
+                            discount = Convert.ToDecimal(ProductDiscountAmount);
+                        }
+
+                        return cost * (1 - discount / 100m);
+                    }
+                    catch
+                    {
+                        return Convert.ToDecimal(ProductCost);
+                    }
+                }
+            }
+
+            public decimal TotalPriceForOrder
+            {
+                get
+                {
+                    return DiscountedPrice * (OrderQuantity > 0 ? OrderQuantity : 1);
+                }
+            }
         public int ProductQuantityInStock { get; set; }
         public string ProductDescription { get; set; }
         public string ProductPhoto { get; set; }
@@ -40,9 +72,12 @@ namespace Yunusov41
             return "Товар_import/" + ProductPhoto;
             }        
         }
+       
         public string ProductStatus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderProduct> OrderProduct { get; set; }
+        [NotMapped]
+        public int OrderQuantity { get; set; } = 1;
     }
 }

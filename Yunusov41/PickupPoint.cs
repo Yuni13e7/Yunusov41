@@ -11,7 +11,8 @@ namespace Yunusov41
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class PickupPoint
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,5 +28,7 @@ namespace Yunusov41
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }
+        [NotMapped]
+        public string FullAddress => $"{PickupPointCity}, {PickupPointStreet} (индекс: {PickupPointIndex})";
     }
 }
